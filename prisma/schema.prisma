@@ -3,7 +3,7 @@
 
 
 datasource db {
-  provider = "mongodb"
+  provider = "mysql"
   url      = env("DATABASE_URL")
   relationMode = "prisma"
 }
@@ -11,12 +11,10 @@ datasource db {
 
 generator client {
   provider = "prisma-client-js"
-  previewFeatures = ["mongodb"]
 }
 
 
 model Category {
-   id String @id @default(auto()) @map("_id") @db.ObjectId
-  name  String
-  
+  id String @id @default(uuid())
+  name  String 
 }
